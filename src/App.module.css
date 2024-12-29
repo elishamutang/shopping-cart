@@ -1,9 +1,3 @@
 main {
     background-color: hsl(0, 0%, 100%);
 }
-
-.front {
-    font-size: 3rem;
-    text-align: center;
-    padding: 12rem 0;
-}
