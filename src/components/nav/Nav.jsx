@@ -9,6 +9,11 @@ const NavBar = () => {
                 <li><a href='#'>Shop</a></li>
                 <li><a href='#'>Brands</a></li>
             </ul>
+            <ul>
+                {/* Update totals for wishlist and cart */}
+                <li><a href='#'>Wishlist</a></li>
+                <li><a href='#'>Cart</a></li>
+            </ul>
         </nav>
     )
 }
