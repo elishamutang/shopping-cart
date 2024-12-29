@@ -1,0 +1,17 @@
+nav {
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+}
+
+ul {
+    list-style-type: none;
+
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+nav a {
+    color: hsl(0, 0%, 100%);
+}
