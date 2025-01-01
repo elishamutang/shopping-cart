@@ -18,12 +18,28 @@ section {
 }
 
 .products {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    border: 1px solid blue;
 }
 
 .product {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    place-items: center;
+
+    border: 1px solid red;
+}
+
+.productImage {
+    width: 30%;
+}
+
+.productTitle {
+    text-align: center;
 }
 
 img {
