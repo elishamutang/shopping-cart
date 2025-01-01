@@ -1,0 +1,31 @@
+section {
+    padding: 2rem;
+}
+
+.front {
+    font-size: 3rem;
+    text-align: center;
+    padding: 45vh 0;
+}
+
+.store {
+    display: grid;
+    grid-template-areas: 
+        "heading"
+        "products"
+    ;
+    gap: 1rem;
+}
+
+.products {
+    display: flex;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width: 100%;
+}
