@@ -1,0 +1,39 @@
+.product {
+    display: grid;
+    grid-template-rows: 2fr 1fr repeat(2, 0.2fr);
+    align-items: center;
+    place-items: center;
+    gap: 0.5rem;
+
+    border: 1px solid black;
+    /* border-radius: 1rem; */
+    padding: 1rem;
+}
+
+.productImage {
+    width: 30%;
+}
+
+.productTitle {
+    text-align: center;
+}
+
+button {
+    padding: 0.3rem;
+    border: 2px solid gray;
+    border-radius: 0.2rem;
+    background-color: white;
+    color: black;
+    transition: all 0.3s, width 1s, letter-spacing 1s;
+    width: 6rem;
+    font-weight: bold;
+}
+
+button:hover {
+    color: green;
+    background-color: lightgreen;
+    border: 2px solid green;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: 1px;
+}
