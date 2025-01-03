@@ -20,28 +20,5 @@ section {
 .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-
-    border: 1px solid blue;
-}
-
-.product {
-    display: grid;
-    grid-template-rows: auto;
-    align-items: center;
-    place-items: center;
-
-    border: 1px solid red;
-}
-
-.productImage {
-    width: 30%;
-}
-
-.productTitle {
-    text-align: center;
-}
-
-img {
-    width: 100%;
+    gap: 1rem;
 }

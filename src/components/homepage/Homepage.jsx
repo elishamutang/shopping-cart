@@ -1,3 +1,4 @@
+import Card from '../card/Card'
 import styles from './Homepage.module.css'
 
 export default function Homepage({items}) {
@@ -12,11 +13,7 @@ export default function Homepage({items}) {
                 <div className={styles.products}>
                     {items.map((item) => {
                         return (
-                            <div key={item.id} className={styles.product}>
-                                <img src={item.image} className={styles.productImage}></img>
-                                <h3 className={styles.productTitle}>{item.title}</h3>
-                                <p>${item.price}</p>
-                            </div>
+                            <Card item={item} key={item.id}/>
                         )
                     })}
                 </div>
