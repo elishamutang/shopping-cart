@@ -1,7 +1,7 @@
 import Card from '../card/Card'
 import styles from './Homepage.module.css'
 
-export default function Homepage({items}) {
+export default function Homepage({items, isLoading}) {
 
     return (
         <>
@@ -10,13 +10,15 @@ export default function Homepage({items}) {
             </section>
             <section className={styles.store}>
                 <h2>Shop</h2>
+                { isLoading ? <h1>Loading...</h1> : 
                 <div className={styles.products}>
                     {items.map((item) => {
                         return (
                             <Card item={item} key={item.id}/>
                         )
                     })}
-                </div>
+                </div>}
+                
             </section>
         </>
     )
