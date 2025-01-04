@@ -7,6 +7,7 @@ import styles from './App.module.css'
 function App() {
 
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -24,12 +25,13 @@ function App() {
       setItems(json)
     })
     .catch((error) => setError(error))
+    .finally(() => setLoading(false))
   }, [])
 
   return(
     <main className={styles.main}>
       <NavBar/>
-      { error ? <Error/> : <Homepage items={items}/> }
+      { error ? <Error/> : <Homepage items={items} isLoading={loading}/> }
     </main>
   )
 }
