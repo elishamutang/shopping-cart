@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import Card from '../card/Card'
 import styles from './Homepage.module.css'
 
 export default function Homepage({items, isLoading}) {
+
+    const [quantity, setQuantity] = useState(0);
 
     return (
         <>
