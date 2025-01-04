@@ -7,7 +7,6 @@ const NavBar = () => {
             <ul className={styles.ul}>
                 <li><h1>All In One Place</h1></li>
                 <li><a href='#'>Shop</a></li>
-                <li><a href='#'>Brands</a></li>
             </ul>
             <ul>
                 {/* Update totals for wishlist and cart */}
