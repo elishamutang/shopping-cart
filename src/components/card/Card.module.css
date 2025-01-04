@@ -1,17 +1,16 @@
 .product {
     display: grid;
-    grid-template-rows: 2fr 1fr repeat(2, 0.2fr);
+    grid-template-rows: 1fr auto;
     align-items: center;
     place-items: center;
     gap: 0.5rem;
 
     border: 1px solid black;
-    /* border-radius: 1rem; */
     padding: 1rem;
 }
 
 .productImage {
-    width: 30%;
+    width: 50%;
 }
 
 .productTitle {
@@ -36,4 +35,13 @@ button:hover {
     cursor: pointer;
     width: 100%;
     letter-spacing: 1px;
+}
+
+input {
+    text-align: center;
+}
+
+.pricing {
+    font-size: 1.5rem;
+    color: rgb(78, 219, 78);
 }
