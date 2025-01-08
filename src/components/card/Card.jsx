@@ -5,7 +5,25 @@ export default function Card({ item }) {
   const [quantity, setQuantity] = useState(0);
 
   function handleChange(e) {
-    setQuantity(e.target.value);
+    if (e.target.value > 1000) {
+      setQuantity(1000);
+    } else if (e.target.value < 0) {
+      setQuantity("");
+    } else {
+      setQuantity(e.target.value);
+    }
+  }
+
+  function handleBlur(e) {
+    if (e.target.value === "") {
+      setQuantity(0);
+    }
+  }
+
+  function handleFocus() {
+    if (quantity === 0) {
+      setQuantity("");
+    }
   }
 
   return (
@@ -18,10 +36,12 @@ export default function Card({ item }) {
         <input
           type="number"
           name="quantity"
-          value={quantity === "" ? 0 : quantity}
+          value={quantity}
           onChange={handleChange}
           min={0}
           max={1000}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
         />
       </label>
       <button>Add to cart</button>
