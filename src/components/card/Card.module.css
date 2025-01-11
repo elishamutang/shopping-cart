@@ -1,47 +1,55 @@
 .product {
-    display: grid;
-    grid-template-rows: 1fr auto;
-    align-items: center;
-    place-items: center;
-    gap: 0.5rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  place-items: center;
+  gap: 0.5rem;
 
-    border: 1px solid black;
-    padding: 1rem;
+  border: 1px solid black;
+  padding: 1rem;
 }
 
 .productImage {
-    width: 50%;
+  width: 50%;
 }
 
 .productTitle {
-    text-align: center;
+  text-align: center;
 }
 
 button {
-    padding: 0.3rem;
-    border: 2px solid gray;
-    border-radius: 0.2rem;
-    background-color: white;
-    color: black;
-    transition: all 0.3s, width 1s, letter-spacing 1s;
-    width: 6rem;
-    font-weight: bold;
+  padding: 0.3rem;
+  border: 2px solid gray;
+  border-radius: 0.2rem;
+  background-color: white;
+  color: black;
+  transition: all 0.3s, width 0.3s, letter-spacing 1s;
+  width: 6rem;
+  font-weight: bold;
 }
 
 button:hover {
-    color: green;
-    background-color: lightgreen;
-    border: 2px solid green;
-    cursor: pointer;
-    width: 100%;
-    letter-spacing: 1px;
+  color: green;
+  background-color: lightgreen;
+  border: 2px solid green;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 1px;
 }
 
 input {
-    text-align: center;
+  text-align: center;
 }
 
 .pricing {
-    font-size: 1.5rem;
-    color: rgb(78, 219, 78);
+  font-size: 1.5rem;
+  color: hsl(192, 56%, 41%);
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.pricingActive {
+  composes: pricing;
+  color: rgb(78, 219, 78);
+  transition: 0.5s;
 }
