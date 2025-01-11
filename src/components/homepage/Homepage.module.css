@@ -1,24 +1,23 @@
 section {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .front {
-    font-size: 3rem;
-    text-align: center;
-    padding: 45vh 0;
+  font-size: 3rem;
+  text-align: center;
+  padding: 45vh 0;
 }
 
 .store {
-    display: grid;
-    grid-template-areas: 
-        "heading"
-        "products"
-    ;
-    gap: 1rem;
+  display: grid;
+  grid-template-areas:
+    "heading"
+    "products";
+  gap: 1rem;
 }
 
 .products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
