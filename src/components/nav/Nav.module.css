@@ -1,21 +1,45 @@
 nav {
-    background-color: hsl(0, 0%, 0%);
-    color: hsl(0, 0%, 100%);
-    width: 100%;
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  width: 100%;
 
-    display: inline-flex;
-    justify-content: space-between;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 
-    display: inline-flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    gap: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1.5rem;
 }
 
 nav a {
-    color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 100%);
+  font-size: 1.2rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.5s, border 2s;
+}
+
+nav a:hover {
+  border: 0.5px solid white;
+  border-radius: 0.5rem;
+  background-color: rgb(63, 63, 63);
+}
+
+.shoppingBagIcon {
+  width: 1em;
+}
+
+h1 {
+  font-size: 2rem;
 }
