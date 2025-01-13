@@ -2,6 +2,7 @@ import useFakeData from "../../hooks/FakeData";
 import Card from "../card/Card";
 import styles from "./Homepage.module.css";
 import Error from "../error/Error";
+import { Link } from "react-router";
 
 export default function Homepage() {
   const { items, loading, error } = useFakeData();
@@ -20,9 +21,14 @@ export default function Homepage() {
           <section className={styles.store}>
             <h2>Shop</h2>
             <div className={styles.products}>
-              {items.map((item) => {
-                return <Card item={item} key={item.id} />;
+              {items.map((item, idx) => {
+                if (idx < 3) {
+                  return <Card item={item} key={item.id} />;
+                }
               })}
+              <Link to={"shop"} className={styles.seeMoreBtn}>
+                See more
+              </Link>
             </div>
           </section>
         </>

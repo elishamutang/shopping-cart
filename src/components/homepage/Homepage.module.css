@@ -5,7 +5,8 @@ section {
 .front {
   font-size: 3rem;
   text-align: center;
-  padding: 45vh 0;
+  padding: 30vh 0;
+  border: 0.2rem solid black;
 }
 
 .store {
@@ -25,4 +26,20 @@ section {
 .loading {
   text-align: center;
   padding-top: 5rem;
+}
+
+.seeMoreBtn {
+  grid-column: 1 / 4;
+  text-align: center;
+
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+  transition: all 0.3s, letter-spacing 1s;
+}
+
+.seeMoreBtn:hover {
+  background-color: black;
+  letter-spacing: 2px;
+  color: white;
 }
