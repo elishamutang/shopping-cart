@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./routes/app/App";
 import ErrorPage from "./routes/errorPage/ErrorPage";
+import Shop from "./routes/shop/Shop";
+import Homepage from "./components/homepage/Homepage";
 import "./main.css";
 
 const router = createBrowserRouter([
@@ -10,6 +12,16 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Homepage />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
+      },
+    ],
   },
 ]);
 
