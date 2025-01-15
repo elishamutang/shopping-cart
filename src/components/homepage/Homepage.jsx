@@ -19,7 +19,7 @@ export default function Homepage() {
             <h1 className={styles.front}>ALL IN ONE PLACE</h1>
           </section>
           <section className={styles.store}>
-            <h2>Shop</h2>
+            <h1>Shop</h1>
             <div className={styles.products}>
               {items.map((item, idx) => {
                 if (idx < 3) {
