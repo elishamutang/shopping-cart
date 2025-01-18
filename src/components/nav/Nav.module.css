@@ -17,6 +17,18 @@ ul {
   gap: 1.5rem;
 }
 
+.home {
+  border: none;
+  transition: none;
+  background-color: transparent;
+}
+
+.home:hover {
+  transition: none;
+  border: none;
+  background-color: transparent;
+}
+
 nav a {
   color: hsl(0, 0%, 100%);
   font-size: 1.2rem;
@@ -27,9 +39,7 @@ nav a {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  transition:
-    all 0.5s,
-    border 2s;
+  transition: all 0.5s, border 2s;
 }
 
 nav a:hover {
