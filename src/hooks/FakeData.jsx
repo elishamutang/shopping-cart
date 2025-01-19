@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// Custom hook to fetch Fake Store API data.
 export default function useFakeData() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
