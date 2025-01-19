@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./Card.module.css";
+import { CartContext } from "../../routes/app/App";
 
 export default function Card({ item }) {
   const [quantity, setQuantity] = useState(0);
   const [buttonHover, setButtonHover] = useState(false);
+  const { cart, setCart } = useContext(CartContext);
 
   function handleChange(e) {
     if (e.target.value > 1000) {
@@ -27,6 +29,7 @@ export default function Card({ item }) {
     }
   }
 
+  // Add To Cart functionality here.
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -34,6 +37,35 @@ export default function Card({ item }) {
       alert("Quantity must at least be 1.");
     } else {
       console.log(`${quantity} of ${item.title} added to cart.`);
+
+      // If cart is empty, add to Cart array.
+      if (cart.length === 0) {
+        setCart([{ product: item.title, amount: Number(quantity) }]);
+      } else {
+        // Find if item exists in Cart array.
+        let cartCopy = [...cart];
+
+        const productExists = cartCopy.some((arrItem) => arrItem.product === item.title);
+
+        // If product exists, add to amount.
+        // Else, add new entry.
+        if (productExists) {
+          setCart(() => {
+            const updatedCart = cartCopy.map((arrItem) => {
+              if (arrItem.product === item.title) {
+                return { ...arrItem, amount: arrItem.amount + Number(quantity) };
+              } else {
+                return arrItem;
+              }
+            });
+
+            return updatedCart;
+          });
+        } else {
+          cartCopy.push({ product: item.title, amount: Number(quantity) });
+          setCart(cartCopy);
+        }
+      }
     }
   }
 
