@@ -35,7 +35,8 @@ const NavBar = () => {
         <li>
           <a href="#">
             Cart
-            <ShoppingBag className={styles.shoppingBagIcon} />({total})
+            <ShoppingBag className={styles.shoppingBagIcon} />
+            {total > 0 && `(${total})`}
           </a>
         </li>
       </ul>
