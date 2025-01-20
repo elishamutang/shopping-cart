@@ -40,7 +40,7 @@ export default function Card({ item }) {
 
       // If cart is empty, add to Cart array.
       if (cart.length === 0) {
-        setCart([{ product: item.title, amount: Number(quantity) }]);
+        setCart([{ id: item.id, product: item.title, amount: Number(quantity), icon: item.image, price: item.price }]);
       } else {
         // Find if item exists in Cart array.
         let cartCopy = [...cart];
@@ -62,7 +62,13 @@ export default function Card({ item }) {
             return updatedCart;
           });
         } else {
-          cartCopy.push({ product: item.title, amount: Number(quantity) });
+          cartCopy.push({
+            id: item.id,
+            product: item.title,
+            amount: Number(quantity),
+            icon: item.image,
+            price: item.price,
+          });
           setCart(cartCopy);
         }
       }
