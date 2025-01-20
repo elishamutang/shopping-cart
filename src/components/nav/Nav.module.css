@@ -18,6 +18,7 @@ ul {
 }
 
 .home {
+  color: hsl(0, 0%, 100%);
   border: none;
   transition: none;
   background-color: transparent;
@@ -29,7 +30,7 @@ ul {
   background-color: transparent;
 }
 
-nav a {
+.clickables {
   color: hsl(0, 0%, 100%);
   font-size: 1.2rem;
   border: 1px solid transparent;
@@ -42,10 +43,11 @@ nav a {
   transition: all 0.5s, border 2s;
 }
 
-nav a:hover {
+.clickables:hover {
   border: 0.5px solid white;
   border-radius: 0.5rem;
   background-color: rgb(63, 63, 63);
+  cursor: pointer;
 }
 
 .shoppingBagIcon {
