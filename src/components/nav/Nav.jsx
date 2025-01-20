@@ -1,20 +1,8 @@
 import { ShoppingBag } from "lucide-react";
 import { Link } from "react-router";
 import styles from "./Nav.module.css";
-import { useContext } from "react";
-import { CartContext } from "../../routes/app/App";
 
-const NavBar = () => {
-  const { cart } = useContext(CartContext);
-
-  // Tally up total number of items in Cart.
-  let total = 0;
-  if (cart.length > 0) {
-    total = cart.reduce((accumulator, currVal) => {
-      return accumulator + currVal.amount;
-    }, 0);
-  }
-
+const NavBar = ({ openCart, total }) => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.ul}>
@@ -24,20 +12,24 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link to={"shop"}>Shop</Link>
+          <Link to={"shop"} className={styles.clickables}>
+            Shop
+          </Link>
         </li>
       </ul>
       <ul>
         {/* Update totals for wishlist and cart */}
         <li>
-          <a href="#">Wishlist</a>
+          <a href="#" className={styles.clickables}>
+            Wishlist
+          </a>
         </li>
         <li>
-          <a href="#">
+          <span className={styles.clickables} onClick={openCart}>
             Cart
             <ShoppingBag className={styles.shoppingBagIcon} />
             {total > 0 && `(${total})`}
-          </a>
+          </span>
         </li>
       </ul>
     </nav>
