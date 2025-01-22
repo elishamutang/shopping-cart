@@ -6,7 +6,8 @@ To-Do List
 3. ~~Incorporate 'Add to Cart' functionality correctly.~~
    1. ~~Figure out way to determine which products were added to cart.~~ (**Solution:** Store item title and amount in objects and store in array.)
 4. Implement side panel for Cart.
-   1. 90% complete. Add smooth transition.
+   1. 90% complete. Add smooth transition. For smooth transition, consider making the cart as a
+      separate component and then wrapping it in a 'container' for the animation.
 5. Make nav bar sticky.
 6. Implement React Testing.
 7. Responsive web design.
