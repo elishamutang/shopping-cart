@@ -2,7 +2,7 @@ import { ShoppingBag } from "lucide-react";
 import { Link } from "react-router";
 import styles from "./Nav.module.css";
 
-const NavBar = ({ openCart, total }) => {
+const NavBar = ({ openCart, totalNumOfItems }) => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.ul}>
@@ -28,7 +28,7 @@ const NavBar = ({ openCart, total }) => {
           <span className={styles.clickables} onClick={openCart}>
             Cart
             <ShoppingBag className={styles.shoppingBagIcon} />
-            {total > 0 && `(${total})`}
+            {totalNumOfItems > 0 && `(${totalNumOfItems})`}
           </span>
         </li>
       </ul>
