@@ -10,13 +10,21 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setCartOpen] = useState(false);
 
-  // Tally up total number of items in Cart.
+  // Tally up total number of items in Cart and get total price for all items in shopping cart.
   let total = 0;
+  let totalNumOfItems = 0;
   if (cart.length > 0) {
-    total = cart.reduce((accumulator, currVal) => {
+    console.log("enter");
+    totalNumOfItems = cart.reduce((accumulator, currVal) => {
       return accumulator + currVal.amount;
     }, 0);
+
+    total = cart.reduce((accumulator, currVal) => {
+      return accumulator + currVal.amount * currVal.price;
+    }, 0);
   }
+
+  console.log(total);
 
   // Show Cart
   function openCart() {
@@ -35,17 +43,18 @@ export default function App() {
   return (
     <main className={styles.main}>
       <CartContext.Provider value={{ cart, setCart }}>
-        <NavBar openCart={openCart} total={total} />
+        <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} />
         <Outlet />
       </CartContext.Provider>
+      {/* Add smooth animation/transition for Cart panel. */}
       {isCartOpen && (
         <div className={styles.sidebar}>
           <div className={styles.top}>
-            <h3>Cart ({total})</h3>
+            <h3>Cart ({totalNumOfItems})</h3>
             <X onClick={closeCart} className={styles.closeCart} />
           </div>
           <div className={styles.productsCart}>
-            {total > 0 &&
+            {totalNumOfItems > 0 &&
               cart.map((cartItem) => {
                 return (
                   <div key={cartItem.id} className={styles.products}>
@@ -58,6 +67,10 @@ export default function App() {
                   </div>
                 );
               })}
+          </div>
+          <div className={styles.total}>
+            <h2>Total</h2>
+            <h2>${total}</h2>
           </div>
         </div>
       )}
