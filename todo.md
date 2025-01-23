@@ -8,7 +8,7 @@ To-Do List
 4. Implement side panel for Cart.
    1. 90% complete. Add smooth transition. For smooth transition, consider making the cart as a
       separate component and then wrapping it in a 'container' for the animation.
-5. Make nav bar sticky.
+5. ~~Make nav bar sticky.~~
 6. Implement React Testing.
 7. Responsive web design.
 8. Deploy to Netlify.
