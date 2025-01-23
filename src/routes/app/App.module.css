@@ -31,8 +31,10 @@ main {
 }
 
 .products {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 0.5fr;
+  align-items: center;
+  gap: 1rem;
   border: 1px solid white;
   padding: 1rem;
 }
@@ -43,13 +45,16 @@ main {
 }
 
 .productIcon {
-  width: 15%;
-}
-
-.productTitle {
-  max-width: 40%;
+  width: 100%;
 }
 
 .productQty span {
   opacity: 0.5;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid white;
+  padding: 1rem;
 }
