@@ -1,8 +1,8 @@
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, Heart } from "lucide-react";
 import { Link } from "react-router";
 import styles from "./Nav.module.css";
 
-const NavBar = ({ openCart, totalNumOfItems }) => {
+const NavBar = ({ openCart, totalNumOfItems, wishlistTotal }) => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.ul}>
@@ -22,12 +22,14 @@ const NavBar = ({ openCart, totalNumOfItems }) => {
         <li>
           <Link to={"wishlist"} className={styles.clickables}>
             Wishlist
+            <Heart className={styles.icon} />
+            {wishlistTotal > 0 && `(${wishlistTotal})`}
           </Link>
         </li>
         <li>
           <span className={styles.clickables} onClick={openCart}>
             Cart
-            <ShoppingBag className={styles.shoppingBagIcon} />
+            <ShoppingBag className={styles.icon} />
             {totalNumOfItems > 0 && `(${totalNumOfItems})`}
           </span>
         </li>
