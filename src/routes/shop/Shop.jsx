@@ -1,5 +1,5 @@
 import useFakeData from "../../hooks/FakeData";
-import styles from "./Shop.module.css";
+import styles from "../../main.module.css";
 import Error from "../../components/error/Error";
 import Card from "../../components/card/Card";
 
