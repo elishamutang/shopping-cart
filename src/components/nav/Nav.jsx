@@ -20,9 +20,9 @@ const NavBar = ({ openCart, totalNumOfItems }) => {
       <ul>
         {/* Update totals for wishlist and cart */}
         <li>
-          <a href="#" className={styles.clickables}>
+          <Link to={"wishlist"} className={styles.clickables}>
             Wishlist
-          </a>
+          </Link>
         </li>
         <li>
           <span className={styles.clickables} onClick={openCart}>
