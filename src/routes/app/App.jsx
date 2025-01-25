@@ -68,7 +68,7 @@ export default function App() {
         </div>
         <div className={styles.total}>
           <h2>Total</h2>
-          <h2>${total}</h2>
+          <h2>${Math.round(total * 100) / 100}</h2>
         </div>
       </div>
     </main>
