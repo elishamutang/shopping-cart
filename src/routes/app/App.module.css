@@ -17,7 +17,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  transition: right 0.8s;
+  transition: right 0.5s;
 }
 
 .showSidebar {
