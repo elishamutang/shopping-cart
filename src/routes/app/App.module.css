@@ -53,6 +53,21 @@ main {
   width: 100%;
 }
 
+.productQty {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.changeProductQty {
+  display: inline-flex;
+  gap: 0.3rem;
+  opacity: 0.5;
+}
+
+.changeProductQty:hover {
+  cursor: pointer;
+}
+
 .productQty span {
   opacity: 0.5;
 }
@@ -67,4 +82,5 @@ main {
 .checkoutBtn {
   composes: addToCartBtn from "/home/elishamutang/Desktop/Projects/shopping-cart/src/components/card/Card.module.css";
   align-self: center;
+  height: 2rem;
 }
