@@ -46,34 +46,31 @@ export default function App() {
         <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} />
         <Outlet />
       </CartContext.Provider>
-      {/* Add smooth animation/transition for Cart panel. */}
-      {isCartOpen && (
-        <div className={styles.sidebar}>
-          <div className={styles.top}>
-            <h3>Cart ({totalNumOfItems})</h3>
-            <X onClick={closeCart} className={styles.closeCart} />
-          </div>
-          <div className={styles.productsCart}>
-            {totalNumOfItems > 0 &&
-              cart.map((cartItem) => {
-                return (
-                  <div key={cartItem.id} className={styles.products}>
-                    <img className={styles.productIcon} src={cartItem.icon}></img>
-                    <p className={styles.productTitle}>{cartItem.product}</p>
-                    <p className={styles.productQty}>
-                      <span>Qty:</span> {cartItem.amount}
-                    </p>
-                    <p>${cartItem.price * cartItem.amount}</p>
-                  </div>
-                );
-              })}
-          </div>
-          <div className={styles.total}>
-            <h2>Total</h2>
-            <h2>${total}</h2>
-          </div>
+      <div className={isCartOpen ? styles.showSidebar : styles.sidebar}>
+        <div className={styles.top}>
+          <h3>Cart ({totalNumOfItems})</h3>
+          <X onClick={closeCart} className={styles.closeCart} />
         </div>
-      )}
+        <div className={styles.productsCart}>
+          {totalNumOfItems > 0 &&
+            cart.map((cartItem) => {
+              return (
+                <div key={cartItem.id} className={styles.products}>
+                  <img className={styles.productIcon} src={cartItem.icon}></img>
+                  <p className={styles.productTitle}>{cartItem.product}</p>
+                  <p className={styles.productQty}>
+                    <span>Qty:</span> {cartItem.amount}
+                  </p>
+                  <p>${cartItem.price * cartItem.amount}</p>
+                </div>
+              );
+            })}
+        </div>
+        <div className={styles.total}>
+          <h2>Total</h2>
+          <h2>${total}</h2>
+        </div>
+      </div>
     </main>
   );
 }
