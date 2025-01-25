@@ -14,7 +14,6 @@ export default function App() {
   let total = 0;
   let totalNumOfItems = 0;
   if (cart.length > 0) {
-    console.log("Cart has more than 1 item.");
     totalNumOfItems = cart.reduce((accumulator, currVal) => {
       return accumulator + currVal.amount;
     }, 0);
