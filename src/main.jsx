@@ -5,7 +5,8 @@ import App from "./routes/app/App";
 import ErrorPage from "./routes/errorPage/ErrorPage";
 import Shop from "./routes/shop/Shop";
 import Homepage from "./components/homepage/Homepage";
-import "./main.css";
+import Wishlist from "./routes/wishlist/Wishlist";
+import "./main.module.css";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop />,
+      },
+      {
+        path: "wishlist",
+        element: <Wishlist />,
       },
     ],
   },
