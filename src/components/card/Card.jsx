@@ -103,7 +103,12 @@ export default function Card({ item }) {
           required
         />
       </label>
-      <button type="submit" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <button
+        type="submit"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={styles.addToCartBtn}
+      >
         Add to cart
       </button>
     </form>
