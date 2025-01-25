@@ -38,14 +38,22 @@ export default function App() {
     console.log("cart closed");
   }
 
+  // Checkout
+  function checkOutHandler() {
+    alert("Thanks for shopping!");
+  }
+
   console.log(cart);
 
   return (
     <main className={styles.main}>
+      {/* Nav and main content */}
       <CartContext.Provider value={{ cart, setCart }}>
         <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} />
         <Outlet />
       </CartContext.Provider>
+
+      {/* Sidebar */}
       <div className={isCartOpen ? styles.showSidebar : styles.sidebar}>
         <div className={styles.top}>
           <h3>Cart ({totalNumOfItems})</h3>
@@ -70,10 +78,15 @@ export default function App() {
           )}
         </div>
         {totalNumOfItems > 0 && (
-          <div className={styles.total}>
-            <h2>Total</h2>
-            <h2>${Math.round(total * 100) / 100}</h2>
-          </div>
+          <>
+            <div className={styles.total}>
+              <h2>Total</h2>
+              <h2>${Math.round(total * 100) / 100}</h2>
+            </div>
+            <button className={styles.checkoutBtn} onClick={checkOutHandler}>
+              Checkout
+            </button>
+          </>
         )}
       </div>
     </main>
