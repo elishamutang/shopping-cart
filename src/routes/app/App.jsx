@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 import NavBar from "../../components/nav/Nav";
 import styles from "./App.module.css";
 import { Outlet } from "react-router";
-import { X } from "lucide-react";
+import { X, Minus, Plus } from "lucide-react";
 
 export const CartContext = createContext(0);
 
@@ -14,7 +14,7 @@ export default function App() {
   let total = 0;
   let totalNumOfItems = 0;
   if (cart.length > 0) {
-    console.log("enter");
+    console.log("Cart has more than 1 item.");
     totalNumOfItems = cart.reduce((accumulator, currVal) => {
       return accumulator + currVal.amount;
     }, 0);
@@ -22,28 +22,56 @@ export default function App() {
     total = cart.reduce((accumulator, currVal) => {
       return accumulator + currVal.amount * currVal.price;
     }, 0);
-  }
 
-  console.log(total);
+    // Round total to two decimal places.
+    total = Math.round(total * 100) / 100;
+  }
 
   // Show Cart
   function openCart() {
     setCartOpen(!isCartOpen);
-    console.log("cart open");
   }
 
   // Close Cart
   function closeCart() {
     setCartOpen(!isCartOpen);
-    console.log("cart closed");
   }
 
-  // Checkout
+  // Checkout and empty cart.
   function checkOutHandler() {
-    alert("Thanks for shopping!");
+    alert(`Thanks for shopping! \nYour total was $${total}`);
+    setCart([]);
   }
 
-  console.log(cart);
+  // Add quantity in Cart
+  function addQtyInCart(cartItem) {
+    setCart(() => {
+      const updatedCart = cart.map((item) => {
+        if (item.id === cartItem.id) {
+          return { ...item, amount: item.amount + 1 };
+        } else {
+          return item;
+        }
+      });
+
+      return updatedCart;
+    });
+  }
+
+  // Reduce quantity in Cart
+  function reduceQtyInCart(cartItem) {
+    setCart(() => {
+      const updatedCart = cart.map((item) => {
+        if (item.id === cartItem.id) {
+          return { ...item, amount: item.amount - 1 };
+        } else {
+          return item;
+        }
+      });
+
+      return updatedCart;
+    });
+  }
 
   return (
     <main className={styles.main}>
@@ -66,9 +94,16 @@ export default function App() {
                 <div key={cartItem.id} className={styles.products}>
                   <img className={styles.productIcon} src={cartItem.icon}></img>
                   <p className={styles.productTitle}>{cartItem.product}</p>
-                  <p className={styles.productQty}>
-                    <span>Qty:</span> {cartItem.amount}
-                  </p>
+                  <div className={styles.productQty}>
+                    <div>
+                      <span>Qty: </span>
+                      {cartItem.amount}
+                    </div>
+                    <div className={styles.changeProductQty}>
+                      <Plus onClick={() => addQtyInCart(cartItem)} />
+                      <Minus onClick={() => reduceQtyInCart(cartItem)} />
+                    </div>
+                  </div>
                   <p>${cartItem.price * cartItem.amount}</p>
                 </div>
               );
@@ -81,7 +116,7 @@ export default function App() {
           <>
             <div className={styles.total}>
               <h2>Total</h2>
-              <h2>${Math.round(total * 100) / 100}</h2>
+              <h2>${total}</h2>
             </div>
             <button className={styles.checkoutBtn} onClick={checkOutHandler}>
               Checkout
