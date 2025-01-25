@@ -5,14 +5,18 @@ import { Outlet } from "react-router";
 import { X, Minus, Plus } from "lucide-react";
 
 export const CartContext = createContext(0);
+export const WishlistContext = createContext();
 
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setCartOpen] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
 
-  // Tally up total number of items in Cart and get total price for all items in shopping cart.
   let total = 0;
   let totalNumOfItems = 0;
+  let wishlistTotal = wishlist.length;
+
+  // Calculate cart total and total number of items in Cart.
   if (cart.length > 0) {
     totalNumOfItems = cart.reduce((accumulator, currVal) => {
       return accumulator + currVal.amount;
@@ -76,8 +80,10 @@ export default function App() {
     <main className={styles.main}>
       {/* Nav and main content */}
       <CartContext.Provider value={{ cart, setCart }}>
-        <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} />
-        <Outlet />
+        <WishlistContext.Provider value={{ wishlist, setWishlist }}>
+          <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} wishlistTotal={wishlistTotal} />
+          <Outlet />
+        </WishlistContext.Provider>
       </CartContext.Provider>
 
       {/* Sidebar */}
