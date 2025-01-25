@@ -63,3 +63,8 @@ main {
   border-top: 1px solid white;
   padding: 1rem;
 }
+
+.checkoutBtn {
+  composes: addToCartBtn from "/home/elishamutang/Desktop/Projects/shopping-cart/src/components/card/Card.module.css";
+  align-self: center;
+}
