@@ -52,7 +52,7 @@ export default function App() {
           <X onClick={closeCart} className={styles.closeCart} />
         </div>
         <div className={styles.productsCart}>
-          {totalNumOfItems > 0 &&
+          {totalNumOfItems > 0 ? (
             cart.map((cartItem) => {
               return (
                 <div key={cartItem.id} className={styles.products}>
@@ -64,12 +64,17 @@ export default function App() {
                   <p>${cartItem.price * cartItem.amount}</p>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <h3>Your cart is currently empty.</h3>
+          )}
         </div>
-        <div className={styles.total}>
-          <h2>Total</h2>
-          <h2>${Math.round(total * 100) / 100}</h2>
-        </div>
+        {totalNumOfItems > 0 && (
+          <div className={styles.total}>
+            <h2>Total</h2>
+            <h2>${Math.round(total * 100) / 100}</h2>
+          </div>
+        )}
       </div>
     </main>
   );
