@@ -15,7 +15,7 @@ export default function Shop() {
           <Error />
         ) : (
           <>
-            <h1>This is the shop</h1>
+            <h1>This is the shop.</h1>
             <div className={styles.products}>
               {items.map((item) => {
                 return <Card item={item} key={item.id} />;
