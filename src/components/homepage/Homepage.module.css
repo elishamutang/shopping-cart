@@ -23,11 +23,6 @@ section {
   gap: 1rem;
 }
 
-.loading {
-  text-align: center;
-  padding-top: 5rem;
-}
-
 .seeMoreBtn {
   grid-column: 1 / 4;
   text-align: center;
