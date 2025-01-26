@@ -1,11 +1,15 @@
 import { useState, useContext } from "react";
 import styles from "./Card.module.css";
-import { CartContext } from "../../routes/app/App";
+import { CartContext, WishlistContext } from "../../routes/app/App";
+import { Heart } from "lucide-react";
 
 export default function Card({ item }) {
   const [quantity, setQuantity] = useState(0);
   const [buttonHover, setButtonHover] = useState(false);
+  const [isLiked, setLiked] = useState(false);
+
   const { cart, setCart } = useContext(CartContext);
+  const { wishlist, setWishlist } = useContext(WishlistContext);
 
   function handleChange(e) {
     if (e.target.value > 1000) {
@@ -38,39 +42,34 @@ export default function Card({ item }) {
     } else {
       console.log(`${quantity} of ${item.title} added to cart.`);
 
-      // If cart is empty, add to Cart array.
-      if (cart.length === 0) {
-        setCart([{ id: item.id, product: item.title, amount: Number(quantity), icon: item.image, price: item.price }]);
+      // Find if item exists in Cart array.
+      let cartCopy = [...cart];
+
+      const productExists = cartCopy.some((arrItem) => arrItem.product === item.title);
+
+      // If product exists, tally up amount.
+      // Else, add new entry into Cart array.
+      if (productExists) {
+        setCart(() => {
+          const updatedCart = cartCopy.map((arrItem) => {
+            if (arrItem.product === item.title) {
+              return { ...arrItem, amount: arrItem.amount + Number(quantity) };
+            } else {
+              return arrItem;
+            }
+          });
+
+          return updatedCart;
+        });
       } else {
-        // Find if item exists in Cart array.
-        let cartCopy = [...cart];
-
-        const productExists = cartCopy.some((arrItem) => arrItem.product === item.title);
-
-        // If product exists, add to amount.
-        // Else, add new entry.
-        if (productExists) {
-          setCart(() => {
-            const updatedCart = cartCopy.map((arrItem) => {
-              if (arrItem.product === item.title) {
-                return { ...arrItem, amount: arrItem.amount + Number(quantity) };
-              } else {
-                return arrItem;
-              }
-            });
-
-            return updatedCart;
-          });
-        } else {
-          cartCopy.push({
-            id: item.id,
-            product: item.title,
-            amount: Number(quantity),
-            icon: item.image,
-            price: item.price,
-          });
-          setCart(cartCopy);
-        }
+        cartCopy.push({
+          id: item.id,
+          product: item.title,
+          amount: Number(quantity),
+          icon: item.image,
+          price: item.price,
+        });
+        setCart(cartCopy);
       }
     }
   }
@@ -83,8 +82,36 @@ export default function Card({ item }) {
     setButtonHover(!buttonHover);
   }
 
+  function wishlistHandler() {
+    // Add to wishlist.
+    let wishlistCopy = [...wishlist];
+
+    // Check if item already exists in wishlist array.
+    const inWishlist = wishlist.some((wishlistItem) => wishlistItem.product === item.title);
+
+    // If item doesn't exist, add as new entry in wishlist array.
+    // Else, if item exists, remove from wishlist array.
+    if (!inWishlist) {
+      const newEntry = { id: item.id, product: item.title, icon: item.image, price: item.price, isLiked: true };
+      wishlistCopy.push(newEntry);
+      setWishlist(wishlistCopy);
+    } else {
+      const filteredWishlist = wishlistCopy.filter((wishlistItem) => wishlistItem.product !== item.title);
+      setWishlist(filteredWishlist);
+    }
+
+    // Style Heart component.
+    setLiked(!isLiked);
+  }
+
   return (
     <form onSubmit={handleSubmit} className={styles.product}>
+      <Heart
+        className={styles.likeBtn}
+        onClick={wishlistHandler}
+        fill={isLiked ? "red" : "none "}
+        color={isLiked ? "red" : "black"}
+      />
       <img src={item.image} className={styles.productImage}></img>
       <h3 className={styles.productTitle}>{item.title}</h3>
       <p className={buttonHover ? styles.pricingActive : styles.pricing}>${item.price}</p>
