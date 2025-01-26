@@ -3,11 +3,15 @@ import NavBar from "../../components/nav/Nav";
 import styles from "./App.module.css";
 import { Outlet } from "react-router";
 import { X, Minus, Plus } from "lucide-react";
+import useFakeData from "../../hooks/FakeData";
+import Error from "../../components/error/Error";
 
 export const CartContext = createContext(0);
 export const WishlistContext = createContext();
+export const DataContext = createContext();
 
 export default function App() {
+  const { items, loading, error } = useFakeData();
   const [cart, setCart] = useState([]);
   const [isCartOpen, setCartOpen] = useState(false);
   const [wishlist, setWishlist] = useState([]);
@@ -79,12 +83,20 @@ export default function App() {
   return (
     <main className={styles.main}>
       {/* Nav and main content */}
-      <CartContext.Provider value={{ cart, setCart }}>
-        <WishlistContext.Provider value={{ wishlist, setWishlist }}>
-          <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} wishlistTotal={wishlistTotal} />
-          <Outlet />
-        </WishlistContext.Provider>
-      </CartContext.Provider>
+      {loading ? (
+        <h1 className={styles.loading}>Loading...</h1>
+      ) : error ? (
+        <Error />
+      ) : (
+        <DataContext.Provider value={{ items }}>
+          <CartContext.Provider value={{ cart, setCart }}>
+            <WishlistContext.Provider value={{ wishlist, setWishlist }}>
+              <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} wishlistTotal={wishlistTotal} />
+              <Outlet />
+            </WishlistContext.Provider>
+          </CartContext.Provider>
+        </DataContext.Provider>
+      )}
 
       {/* Sidebar */}
       <div className={isCartOpen ? styles.showSidebar : styles.sidebar}>
@@ -97,8 +109,8 @@ export default function App() {
             cart.map((cartItem) => {
               return (
                 <div key={cartItem.id} className={styles.products}>
-                  <img className={styles.productIcon} src={cartItem.icon}></img>
-                  <p className={styles.productTitle}>{cartItem.product}</p>
+                  <img className={styles.productIcon} src={cartItem.image}></img>
+                  <p className={styles.productTitle}>{cartItem.title}</p>
                   <div className={styles.productQty}>
                     <div>
                       <span>Qty: </span>
