@@ -84,3 +84,8 @@ main {
   align-self: center;
   height: 2rem;
 }
+
+.loading {
+  text-align: center;
+  padding-top: 5rem;
+}
