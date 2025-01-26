@@ -6,7 +6,6 @@ import { Heart } from "lucide-react";
 export default function Card({ item }) {
   const [quantity, setQuantity] = useState(0);
   const [buttonHover, setButtonHover] = useState(false);
-  const [isLiked, setLiked] = useState(false);
 
   const { cart, setCart } = useContext(CartContext);
   const { wishlist, setWishlist } = useContext(WishlistContext);
@@ -64,9 +63,9 @@ export default function Card({ item }) {
       } else {
         cartCopy.push({
           id: item.id,
-          product: item.title,
+          title: item.title,
           amount: Number(quantity),
-          icon: item.image,
+          image: item.image,
           price: item.price,
         });
         setCart(cartCopy);
@@ -87,21 +86,18 @@ export default function Card({ item }) {
     let wishlistCopy = [...wishlist];
 
     // Check if item already exists in wishlist array.
-    const inWishlist = wishlist.some((wishlistItem) => wishlistItem.product === item.title);
+    const inWishlist = wishlist.some((wishlistItem) => wishlistItem.id === item.id);
 
     // If item doesn't exist, add as new entry in wishlist array.
     // Else, if item exists, remove from wishlist array.
     if (!inWishlist) {
-      const newEntry = { id: item.id, product: item.title, icon: item.image, price: item.price, isLiked: true };
+      const newEntry = { id: item.id, title: item.title, image: item.image, price: item.price, isLiked: true };
       wishlistCopy.push(newEntry);
       setWishlist(wishlistCopy);
     } else {
-      const filteredWishlist = wishlistCopy.filter((wishlistItem) => wishlistItem.product !== item.title);
+      const filteredWishlist = wishlistCopy.filter((wishlistItem) => wishlistItem.id !== item.id);
       setWishlist(filteredWishlist);
     }
-
-    // Style Heart component.
-    setLiked(!isLiked);
   }
 
   return (
@@ -109,8 +105,8 @@ export default function Card({ item }) {
       <Heart
         className={styles.likeBtn}
         onClick={wishlistHandler}
-        fill={isLiked ? "red" : "none "}
-        color={isLiked ? "red" : "black"}
+        fill={item.isLiked ? "red" : "none "}
+        color={item.isLiked ? "red" : "black"}
       />
       <img src={item.image} className={styles.productImage}></img>
       <h3 className={styles.productTitle}>{item.title}</h3>
