@@ -1,28 +1,27 @@
-import useFakeData from "../../hooks/FakeData";
 import styles from "../../main.module.css";
-import Error from "../../components/error/Error";
 import Card from "../../components/card/Card";
+import { useContext } from "react";
+import { DataContext, WishlistContext } from "../app/App";
 
 export default function Shop() {
-  const { items, loading, error } = useFakeData();
+  const { items } = useContext(DataContext);
+  const { wishlist } = useContext(WishlistContext);
 
   return (
     <>
       <section className={styles.store}>
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : error ? (
-          <Error />
-        ) : (
-          <>
-            <h1>This is the shop.</h1>
-            <div className={styles.products}>
-              {items.map((item) => {
-                return <Card item={item} key={item.id} />;
-              })}
-            </div>
-          </>
-        )}
+        <h1>This is the shop.</h1>
+        <div className={styles.products}>
+          {items.map((item) => {
+            const wishlistItem = wishlist.find((wishlistItem) => wishlistItem.id === item.id);
+
+            if (wishlistItem) {
+              return <Card key={item.id} item={wishlistItem} />;
+            } else {
+              return <Card key={item.id} item={item} />;
+            }
+          })}
+        </div>
       </section>
     </>
   );
