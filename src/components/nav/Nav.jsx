@@ -1,6 +1,7 @@
 import { ShoppingBag, Heart } from "lucide-react";
 import { Link } from "react-router";
 import styles from "./Nav.module.css";
+import PropTypes from "prop-types";
 
 const NavBar = ({ openCart, totalNumOfItems, wishlistTotal }) => {
   return (
@@ -36,6 +37,12 @@ const NavBar = ({ openCart, totalNumOfItems, wishlistTotal }) => {
       </ul>
     </nav>
   );
+};
+
+NavBar.propTypes = {
+  openCart: PropTypes.func,
+  totalNumOfItems: PropTypes.number,
+  wishlistTotal: PropTypes.number,
 };
 
 export default NavBar;
