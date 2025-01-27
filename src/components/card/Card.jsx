@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import styles from "./Card.module.css";
 import { CartContext, WishlistContext } from "../../routes/app/App";
 import { Heart } from "lucide-react";
+import PropTypes from "prop-types";
 
 export default function Card({ item }) {
   const [quantity, setQuantity] = useState(0);
@@ -137,3 +138,7 @@ export default function Card({ item }) {
     </form>
   );
 }
+
+Card.propTypes = {
+  item: PropTypes.object,
+};
