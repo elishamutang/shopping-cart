@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+let fetchMockResponse;
+
 // Custom hook to fetch Fake Store API data.
 export default function useFakeData() {
   const [items, setItems] = useState([]);
@@ -17,6 +19,7 @@ export default function useFakeData() {
       })
       .then((json) => {
         console.log(json);
+        fetchMockResponse = json;
         setItems(json);
       })
       .catch((error) => setError(error))
@@ -25,3 +28,5 @@ export default function useFakeData() {
 
   return { items, loading, error };
 }
+
+export { fetchMockResponse };
