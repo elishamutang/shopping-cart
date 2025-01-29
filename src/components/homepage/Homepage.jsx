@@ -15,7 +15,7 @@ export default function Homepage() {
       </section>
       <section className={styles.store}>
         <h1>Shop</h1>
-        <div className={styles.products}>
+        <div className={styles.products} data-testid="productsDiv">
           {items.map((item, idx) => {
             if (idx < 3) {
               const wishlistItem = wishlist.find((wishlistItem) => wishlistItem.id === item.id);

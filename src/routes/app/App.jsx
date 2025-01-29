@@ -99,7 +99,7 @@ export default function App() {
       )}
 
       {/* Sidebar */}
-      <div className={isCartOpen ? styles.showSidebar : styles.sidebar}>
+      <div data-testid="sidebar" className={isCartOpen ? styles.showSidebar : styles.sidebar}>
         <div className={styles.top}>
           <h3>Cart ({totalNumOfItems})</h3>
           <X onClick={closeCart} className={styles.closeCart} />
