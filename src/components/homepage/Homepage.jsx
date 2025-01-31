@@ -32,7 +32,7 @@ export default function Homepage() {
             }
           })}
           <Link to={"shop"} className={styles.seeMoreBtn}>
-            See more
+            SEE MORE
           </Link>
         </div>
       </section>

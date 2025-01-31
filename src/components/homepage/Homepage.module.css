@@ -36,7 +36,7 @@ section {
 
   color: black;
   font-weight: bold;
-  border: 1px solid black;
+  border: 0.2rem solid black;
   transition: all 0.3s, letter-spacing 1s;
 }
 
