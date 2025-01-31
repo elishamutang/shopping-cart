@@ -23,6 +23,13 @@ section {
   gap: 1rem;
 }
 
+@media screen and (max-width: 650px) {
+  .store .products {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .seeMoreBtn {
   grid-column: 1 / 4;
   text-align: center;
