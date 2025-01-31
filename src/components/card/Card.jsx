@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import styles from "/home/elishamutang/Desktop/Projects/shopping-cart/src/components/card/Card.module.css";
+import styles from "/src/components/card/Card.module.css";
 import { CartContext, WishlistContext } from "../../routes/app/App";
 import { Heart } from "lucide-react";
 import PropTypes from "prop-types";

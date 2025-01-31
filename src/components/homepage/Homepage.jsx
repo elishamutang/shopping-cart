@@ -1,5 +1,5 @@
 import Card from "../card/Card";
-import styles from "/home/elishamutang/Desktop/Projects/shopping-cart/src/components/homepage/Homepage.module.css";
+import styles from "/src/components/homepage/Homepage.module.css";
 import { Link } from "react-router";
 import { useContext, useEffect } from "react";
 import { DataContext, WishlistContext } from "../../routes/app/App";
