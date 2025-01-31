@@ -6,7 +6,7 @@ import ErrorPage from "./routes/errorPage/ErrorPage";
 import Shop from "./routes/shop/Shop";
 import Homepage from "./components/homepage/Homepage";
 import Wishlist from "./routes/wishlist/Wishlist";
-import "/src/main.module.css";
+import "./main.module.css";
 
 const router = createBrowserRouter([
   {
