@@ -1,12 +1,16 @@
 import Card from "../card/Card";
 import styles from "./Homepage.module.css";
 import { Link } from "react-router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext, WishlistContext } from "../../routes/app/App";
 
 export default function Homepage() {
   const { items } = useContext(DataContext);
   const { wishlist } = useContext(WishlistContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

@@ -1,11 +1,15 @@
 import styles from "../../main.module.css";
 import Card from "../../components/card/Card";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext, WishlistContext } from "../app/App";
 
 export default function Shop() {
   const { items } = useContext(DataContext);
   const { wishlist } = useContext(WishlistContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

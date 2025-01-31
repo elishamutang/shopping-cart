@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "../../main.module.css";
 import { WishlistContext } from "../app/App";
 import Card from "../../components/card/Card";
 
 export default function Wishlist() {
   const { wishlist } = useContext(WishlistContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className={styles.store}>
