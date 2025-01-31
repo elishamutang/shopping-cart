@@ -92,6 +92,15 @@ main {
   height: 2rem;
 }
 
+.checkoutBtn:hover {
+  color: green;
+  background-color: lightgreen;
+  border: 2px solid green;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 1px;
+}
+
 .loading {
   text-align: center;
   padding-top: 5rem;
