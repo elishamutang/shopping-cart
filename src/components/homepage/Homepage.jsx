@@ -1,5 +1,5 @@
-import Card from "../card/Card";
-import styles from "../../components/homepage/Homepage.module.css";
+import Card from "../card/Cards";
+import styles from "../homepage/Homepage.module.css";
 import { Link } from "react-router";
 import { useContext, useEffect } from "react";
 import { DataContext, WishlistContext } from "../../routes/app/App";

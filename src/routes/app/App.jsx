@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 import NavBar from "../../components/nav/Nav";
-import styles from "./App.module.css";
+import styles from "../app/App.module.css";
 import { Outlet } from "react-router";
 import { X, Minus, Plus } from "lucide-react";
 import useFakeData from "../../hooks/FakeData";

@@ -1,5 +1,5 @@
 import styles from "../../main.module.css";
-import Card from "../../components/card/Card";
+import Card from "../../components/card/Cards";
 import { useContext, useEffect } from "react";
 import { DataContext, WishlistContext } from "../app/App";
 

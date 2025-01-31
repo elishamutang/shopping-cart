@@ -80,7 +80,7 @@ main {
 }
 
 .checkoutBtn {
-  composes: addToCartBtn from "/home/elishamutang/Desktop/Projects/shopping-cart/src/components/card/Card.module.css";
+  composes: addToCartBtn from "/home/elishamutang/Desktop/Projects/shopping-cart/src/components/card/Cards.module.css";
   align-self: center;
   height: 2rem;
 }
