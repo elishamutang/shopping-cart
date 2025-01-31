@@ -45,14 +45,14 @@ export default function Card({ item }) {
       // Find if item exists in Cart array.
       let cartCopy = [...cart];
 
-      const productExists = cartCopy.some((arrItem) => arrItem.product === item.title);
+      const productExists = cartCopy.some((arrItem) => arrItem.id === item.id);
 
       // If product exists, tally up amount.
       // Else, add new entry into Cart array.
       if (productExists) {
         setCart(() => {
           const updatedCart = cartCopy.map((arrItem) => {
-            if (arrItem.product === item.title) {
+            if (arrItem.id === item.id) {
               return { ...arrItem, amount: arrItem.amount + Number(quantity) };
             } else {
               return arrItem;
