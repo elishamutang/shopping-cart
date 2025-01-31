@@ -1,6 +1,6 @@
 import { ShoppingBag, Heart } from "lucide-react";
 import { Link } from "react-router";
-import styles from "../nav/Nav.module.css";
+import styles from "../../components/nav/Nav.module.css";
 import PropTypes from "prop-types";
 
 const NavBar = ({ openCart, totalNumOfItems, wishlistTotal }) => {
