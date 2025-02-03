@@ -12,4 +12,4 @@ To-Do List
 7. ~~Complete wish list page.~~
 8. Implement React Testing.
 9. ~~Responsive web design.~~
-10. Deploy to Netlify.
+10. ~~Deploy to Netlify.~~
