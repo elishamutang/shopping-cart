@@ -5,6 +5,7 @@ import { Outlet } from "react-router";
 import { X, Minus, Plus } from "lucide-react";
 import useFakeData from "../../hooks/FakeData";
 import Error from "../../components/error/Error";
+import Footer from "../../components/footer/Footer";
 
 export const CartContext = createContext(0);
 export const WishlistContext = createContext();
@@ -93,6 +94,7 @@ export default function App() {
             <WishlistContext.Provider value={{ wishlist, setWishlist }}>
               <NavBar openCart={openCart} totalNumOfItems={totalNumOfItems} wishlistTotal={wishlistTotal} />
               <Outlet />
+              <Footer />
             </WishlistContext.Provider>
           </CartContext.Provider>
         </DataContext.Provider>
