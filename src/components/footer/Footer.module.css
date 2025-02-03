@@ -1,0 +1,16 @@
+.footer {
+  padding: 1rem 2rem;
+}
+
+.footer p {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.footer span {
+  border-bottom: 1px solid gray;
+}
+
+.footer a {
+  color: black;
+}
