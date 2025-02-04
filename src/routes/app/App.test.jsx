@@ -15,7 +15,9 @@ describe("Shopping cart", () => {
 
     expect(sidebar).toBeInTheDocument();
   });
+});
 
+describe("Fake Data", () => {
   it("should return the initial values for items, loading and error ", async () => {
     const { result } = renderHook(() => useFakeData());
     console.log(result.current);
