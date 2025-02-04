@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 import NavBar from "../../components/nav/Nav";
 import styles from "../app/App.module.css";
 import { Outlet } from "react-router";
-import { X, Minus, Plus } from "lucide-react";
+import { X, Minus, Plus, Trash2 } from "lucide-react";
 import useFakeData from "../../hooks/FakeData";
 import Error from "../../components/error/Error";
 import Footer from "../../components/footer/Footer";
@@ -45,6 +45,11 @@ export default function App() {
     setCartOpen(!isCartOpen);
   }
 
+  // Empty cart only.
+  function emptyCart() {
+    setCart([]);
+  }
+
   // Checkout and empty cart.
   function checkOutHandler() {
     alert(`Thanks for shopping! \nYour total was $${total}`);
@@ -53,17 +58,21 @@ export default function App() {
 
   // Add quantity in Cart
   function addQtyInCart(cartItem) {
-    setCart(() => {
-      const updatedCart = cart.map((item) => {
-        if (item.id === cartItem.id) {
-          return { ...item, amount: item.amount + 1 };
-        } else {
-          return item;
-        }
-      });
+    if (cartItem.amount === 1000) {
+      alert("You've reached maximum amount.");
+    } else {
+      setCart(() => {
+        const updatedCart = cart.map((item) => {
+          if (item.id === cartItem.id) {
+            return { ...item, amount: item.amount + 1 };
+          } else {
+            return item;
+          }
+        });
 
-      return updatedCart;
-    });
+        return updatedCart;
+      });
+    }
   }
 
   // Reduce quantity in Cart
@@ -103,7 +112,10 @@ export default function App() {
       {/* Sidebar */}
       <div data-testid="sidebar" className={isCartOpen ? styles.showSidebar : styles.sidebar}>
         <div className={styles.top}>
-          <h3>Cart ({totalNumOfItems})</h3>
+          <div className={styles.left}>
+            <h3>Cart ({totalNumOfItems})</h3>
+            <Trash2 onClick={emptyCart} className={styles.emptyCart} />
+          </div>
           <X onClick={closeCart} className={styles.closeCart} />
         </div>
         <div className={styles.productsCart}>
@@ -123,7 +135,7 @@ export default function App() {
                       <Minus onClick={() => reduceQtyInCart(cartItem)} />
                     </div>
                   </div>
-                  <p>${cartItem.price * cartItem.amount}</p>
+                  <p>${Math.round(cartItem.price * cartItem.amount * 100) / 100}</p>
                 </div>
               );
             })
