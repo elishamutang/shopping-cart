@@ -31,7 +31,14 @@ main {
   align-items: center;
 }
 
-.closeCart {
+.left {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.closeCart,
+.emptyCart {
   cursor: pointer;
 }
 
